@@ -3,13 +3,22 @@
  */
 'use strict';
 
-const CACHE_NAME = 'static-cache-v3';
+const CACHE_NAME = 'what-pwa-can-do-0.0.1';
 
 const FILES_TO_CACHE = [
     '/index.html',
+    '/index.js',
     '/manifest.json',
     '/style.css',
-    
+    '/lib/base.png',
+    '/lib/iconfont/iconfont.css',
+    '/lib/iconfont/iconfont.eot',
+    '/lib/iconfont/iconfont.js',
+    '/lib/iconfont/iconfont.json',
+    '/lib/iconfont/iconfont.svg',
+    '/lib/iconfont/iconfont.ttf',
+    '/lib/iconfont/iconfont.woff',
+    '/lib/iconfont/iconfont.woff2'
 ];
 
 self.addEventListener('install', (evt) => {

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const CACHE_NAME = 'what-pwa-can-do-0.0.1';
+const CACHE_NAME = 'what-pwa-can-do-0.0.2';
 
 const FILES_TO_CACHE = [
     '/index.html',

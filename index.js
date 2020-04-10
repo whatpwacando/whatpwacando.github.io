@@ -7,6 +7,6 @@ window.addEventListener('load', async () => {
 });
 
 byId('reload').addEventListener('click', () => {
-    updateStatus('uploading');
+    updateStatus('reloading');
     window.location.reload();
 })

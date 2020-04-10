@@ -25,6 +25,7 @@
     </header>
     <div class="container">
         <button class="btn">Install</button>
+        <span id="status">stabled</span>
     </div>
     <footer class="footer">
         <div class="footer-home">
@@ -50,6 +51,7 @@
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
+    
             const mainSWRegistration = await navigator.serviceWorker.register('/service-worker.js');
             window.swReg = {
                 main: mainSWRegistration

@@ -34,7 +34,7 @@ button.btn:active {
 }
 
 footer.footer {
-    height: 4rem;
+    height: 5rem;
     bottom: 0;
     left: 0;
     right: 0;
@@ -49,6 +49,8 @@ footer.footer > div {
 }
 .btn.main-tab {
     text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 2.6rem;
 }
 
 .btn.main-tab > span {

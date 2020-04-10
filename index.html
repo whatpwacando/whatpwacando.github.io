@@ -9,7 +9,7 @@
     <link rel="icon" href="/lib/icons/icon-32x32.png" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="PWA">
     <link rel="apple-touch-icon" href="/lib/icons/icon-152x152.png">
     <meta name="description" content="A sample pwa app demo">
@@ -39,13 +39,14 @@
             </button>
         </div>
         <div class="footer-reload">
-            <button class="btn main-tab">Reload
+            <button id="reload" class="btn main-tab">Reload
                 <span class="iconfont icon-reload1"></span>
             </button>
         </div>
     </footer>
 </body>
 <script src="./lib/jquery.min.js"></script>
+<script src="./index.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {

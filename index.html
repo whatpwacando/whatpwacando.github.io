@@ -6,27 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="whatpwacando" content="what pwa can do">
-    <link rel="icon" href="/images/icons/icon-32x32.png" type="image/x-icon" />
+    <link rel="icon" href="/lib/icons/icon-32x32.png" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="PWA">
-    <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" href="/lib/icons/icon-152x152.png">
     <meta name="description" content="A sample pwa app demo">
     <meta name="theme-color" content="#2F3BA2" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./lib/iconfont/iconfont.css">
     <title>WhatPWACando</title>
 </head>
 
 <body>
-    <h1>hello there</h1>
+    <header class="header">
+        <img class="header-image" src="./lib/base.png" alt="pwa">
+    </header>
+    <div class="container">
+        <button class="btn">Install</button>
+    </div>
+    <footer class="footer">
+        <div class="footer-home">
+            <button class="btn main-tab">
+                Home
+                <span class="iconfont icon-home1"></span>
+            </button>
+        </div>
+        <div class="footer-issue">
+            <button class="btn main-tab">Issue
+                <span class="iconfont icon-question"></span>
+            </button>
+        </div>
+        <div class="footer-reload">
+            <button class="btn main-tab">Reload
+                <span class="iconfont icon-reload1"></span>
+            </button>
+        </div>
+    </footer>
 </body>
+<script src="./lib/jquery.min.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then((reg) => {
-                    console.log('Service worker registered.', reg);
-                });
+        window.addEventListener('load', async () => {
+            const mainSWRegistration = await navigator.serviceWorker.register('/service-worker.js');
+            window.swReg = {
+                main: mainSWRegistration
+            };
+            console.log(swReg, 'rrrr')
         });
     }
 </script>

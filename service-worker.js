@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const CACHE_NAME = 'what-pwa-can-do-0.0.5';
+const CACHE_NAME = 'what-pwa-can-do-0.0.1';
 const DATA_CACHE = 'what-pwa-can-do-data-0.0.1';
 
 const FILES_TO_CACHE = [

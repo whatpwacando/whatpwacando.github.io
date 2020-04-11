@@ -48,13 +48,13 @@ footer.footer {
     top: 0;
     left: 0;
     right: 0;
-    height: 0.1rem;
+    height: 0.2rem;
     background-color: #fb9838;
     text-align: left;
 }
 .status-block {
     width: 8rem;
-    height: 0.1rem;
+    height: 0.2rem;
     background-color: #50caba;
     animation: move 0.6s infinite;
     -webkit-animation: move 0.6s infinite;

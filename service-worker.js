@@ -3,9 +3,11 @@
  */
 'use strict';
 
-const CACHE_NAME = 'what-pwa-can-do-0.0.2';
+const CACHE_NAME = 'what-pwa-can-do-0.0.5';
+const DATA_CACHE = 'what-pwa-can-do-data-0.0.1';
 
 const FILES_TO_CACHE = [
+    '/',
     '/index.html',
     '/index.js',
     '/manifest.json',
@@ -29,20 +31,21 @@ const FILES_TO_CACHE = [
     '/lib/icons/icon-512x512.png'
 ];
 
-self.addEventListener('install', (evt) => {
+self.addEventListener('install', (event) => {
     console.log('[ServiceWorker] Install');
-    evt.waitUntil(
+    event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('[ServiceWorker] Pre-caching offline page');
-            return cache.addAll(FILES_TO_CACHE);
+            return cache.addAll(FILES_TO_CACHE)
+                .then(() => self.skipWaiting());
         })
     );
     self.skipWaiting();
 });
 
-self.addEventListener('activate', (evt) => {
+self.addEventListener('activate', (event) => {
     console.log('[ServiceWorker] Activate');
-    evt.waitUntil(
+    event.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
                 if (key !== CACHE_NAME) {
@@ -52,23 +55,16 @@ self.addEventListener('activate', (evt) => {
             }));
         })
     );
-    self.clients.claim();
+    event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('fetch', (evt) => {
-    console.log('[ServiceWorker] Fetch', evt.request.url);
-    // CODELAB: Add fetch event handler here.
-    if (evt.request.mode !== 'navigate') {
-        // Not a page navigation, bail.
-        return;
-    }
-    evt.respondWith(
-        fetch(evt.request)
-            .catch(() => {
-                return caches.open(CACHE_NAME)
-                    .then((cache) => {
-                        return cache.match('offline.html');
-                    });
+self.addEventListener('fetch', event => {
+    console.log('[ServiceWorker] Fetch', event, event.request.url);
+    event.respondWith(
+        caches.open(CACHE_NAME)
+            .then(cache => cache.match(event.request, { ignoreSearch: true }))
+            .then(response => {
+                return response || fetch(event.request);
             })
     );
 });

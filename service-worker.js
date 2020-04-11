@@ -32,7 +32,7 @@ const FILES_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
-    console.log('[ServiceWorker] Install');
+    // console.log('[ServiceWorker] Install');
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log('[ServiceWorker] Pre-caching offline page');
@@ -44,12 +44,12 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-    console.log('[ServiceWorker] Activate');
+    // console.log('[ServiceWorker] Activate');
     event.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
                 if (key !== CACHE_NAME) {
-                    console.log('[ServiceWorker] Removing old cache', key);
+                    // console.log('[ServiceWorker] Removing old cache', key);
                     return caches.delete(key);
                 }
             }));
@@ -59,7 +59,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', event => {
-    console.log('[ServiceWorker] Fetch', event, event.request.url);
+    // console.log('[ServiceWorker] Fetch', event, event.request.url);
     event.respondWith(
         caches.open(CACHE_NAME)
             .then(cache => cache.match(event.request, { ignoreSearch: true }))

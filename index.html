@@ -16,7 +16,7 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./lib/iconfont/iconfont.css">
-    <title>WhatPWACando</title>
+    <title>WhatPWACanDo</title>
 </head>
 
 <body>
@@ -24,7 +24,42 @@
         <img class="header-image" src="./lib/base.png" alt="pwa">
     </header>
     <div class="container">
-        <button class="btn">Install</button>
+        <div class="item">
+            <span id="device" class="iconfont icon-deviceon"></span>
+            OnLine
+        </div>
+        <div class="item">
+            <span class="iconfont icon-devices"></span>
+            Device Info
+        </div>
+        <div class="item">
+            <span class="iconfont icon-aboutshare"></span>
+            Share
+        </div>
+        <div class="item">
+            <span class="iconfont icon-location3"></span>
+            Geolocation
+        </div>
+        <div class="item">
+            <span class="iconfont icon-audio3"></span>
+            Audio
+        </div>
+        <div class="item">
+            <span class="iconfont icon-contact"></span>
+            Contact
+        </div>
+        <div class="item">
+            <span class="iconfont icon-audio1"></span>
+            Speech R
+        </div>
+        <div class="item">
+            <span class="iconfont icon-Devicephonerotate-"></span>
+            Audio
+        </div>
+        <div class="item">
+            <span class="iconfont icon-speech"></span>
+            Speech S
+        </div>
     </div>
     <footer class="footer">
         <div id="status-bar" class="status-bar">
@@ -32,21 +67,37 @@
         </div>
         <div class="tab footer-home">
             <button class="btn main-tab">
-                Home
                 <span class="iconfont icon-home1"></span>
             </button>
         </div>
+        <div class="tab footer-about">
+            <button class="btn main-tab">
+                <span class="iconfont icon-aboutus"></span>
+            </button>
+        </div>
+        <div class="tab footer-install">
+            <button class="btn main-tab">
+                <span class="iconfont icon-plus"></span>
+            </button>
+        </div>
         <div class="tab footer-issue">
-            <button class="btn main-tab">Issue
+            <button class="btn main-tab">
                 <span class="iconfont icon-question"></span>
             </button>
         </div>
         <div class="tab footer-reload">
-            <button id="reload" class="btn main-tab">Reload
+            <button id="reload" class="btn main-tab">
                 <span class="iconfont icon-reload1"></span>
             </button>
         </div>
     </footer>
+    <div class="pop-up">
+        <div class="pop-up-content">
+            <div id="message" class="message">
+                feature is working on...
+            </div>
+        </div>
+    </div>
 </body>
 <script src="./index.js"></script>
 <script>
@@ -57,7 +108,6 @@
             window.swReg = {
                 main: mainSWRegistration
             };
-            console.log(swReg, 'rrrr')
         });
     }
 </script>

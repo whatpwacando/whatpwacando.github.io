@@ -9,6 +9,7 @@ const FILES_TO_CACHE = [
     '/index.html',
     '/index.js',
     '/manifest.json',
+    '/service-worker.js',
     '/style.css',
     '/lib/base.png',
     '/lib/iconfont/iconfont.css',
@@ -18,7 +19,14 @@ const FILES_TO_CACHE = [
     '/lib/iconfont/iconfont.svg',
     '/lib/iconfont/iconfont.ttf',
     '/lib/iconfont/iconfont.woff',
-    '/lib/iconfont/iconfont.woff2'
+    '/lib/iconfont/iconfont.woff2',
+    '/lib/icons/icon-128x128.png',
+    '/lib/icons/icon-144x144.png',
+    '/lib/icons/icon-152x152.png',
+    '/lib/icons/icon-192x192.png',
+    '/lib/icons/icon-256x256.png',
+    '/lib/icons/icon-32x32.png',
+    '/lib/icons/icon-512x512.png'
 ];
 
 self.addEventListener('install', (evt) => {

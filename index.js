@@ -5,15 +5,6 @@ const byClassName = className => document.getElementsByClassName(className);
 const updateStatus = status => byId('status-bar').style.display = status;
 let messageTimeoutId = 0;
 window.addEventListener('load', async () => {
-    // /* console.log(navigator);
-    // const { onLine, platform, deviceMemory } = navigator;
-    // const html = `
-    // <span>Device Info:</span>
-    // <span>isOnLine: ${onLine}</span>
-    // <span>platform: ${platform}</span>
-    // <span>deviceMemory: ${deviceMemory}</span>
-    // `;
-    // byId('device-info').innerHTML = html; */
     updateStatus('none');
 });
 
@@ -36,3 +27,9 @@ const mountItemClickEvent = () => {
 }
 
 mountItemClickEvent();
+
+const checkInternet = () => {
+    const { onLine } = navigator;
+    byId('device').attributes.className = onLine ? 'iconfont icon-deviceon' : 'iconfont icon-deviceoff';
+    byId('device-info').innerHTML = html;
+}

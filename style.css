@@ -64,9 +64,6 @@ div.item > span {
     height: 6rem;
     line-height: 6rem;
 }
-.icon-deviceon {
-    color: var(--green);
-}
 .icon-deviceoff {
     color: var(--red);
 }

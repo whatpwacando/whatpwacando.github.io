@@ -6,6 +6,7 @@ const updateStatus = status => byId('status-bar').style.display = status;
 let messageTimeoutId = 0;
 window.addEventListener('load', async () => {
     updateStatus('none');
+    checkInternet();
 });
 
 byId('reload').addEventListener('click', () => {
@@ -30,6 +31,5 @@ mountItemClickEvent();
 
 const checkInternet = () => {
     const { onLine } = navigator;
-    byId('device').attributes.className = onLine ? 'iconfont icon-deviceon' : 'iconfont icon-deviceoff';
-    byId('device-info').innerHTML = html;
+    byId('device').setAttribute('class', onLine ? 'iconfont icon-deviceon' : 'iconfont icon-deviceoff');
 }

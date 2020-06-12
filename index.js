@@ -15,7 +15,9 @@ byId('reload').addEventListener('click', () => {
 })
 
 byId('no-keyboard').addEventListener('focus', (event) => {
+    console.log(event);
     event.preventDefault();
+    event.stopPropagation();
 });
 
 const mountItemClickEvent = () => {

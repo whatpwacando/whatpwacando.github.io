@@ -14,6 +14,10 @@ byId('reload').addEventListener('click', () => {
     window.location.reload();
 })
 
+byId('no-keyboard').addEventListener('focus', (event) => {
+    event.preventDefault();
+});
+
 const mountItemClickEvent = () => {
     for (let item of byClassName('item')) {
         item.addEventListener('click', (evnet) => {

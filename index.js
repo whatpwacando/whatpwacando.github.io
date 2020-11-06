@@ -90,7 +90,7 @@ byId('download').addEventListener('click', () => {
     document.body.removeChild(link);
 });
 
-byId('download').addEventListener('click', () => {
+byId('download-file').addEventListener('click', () => {
     const link = document.createElement('a');
     //设置下载的文件名
     link.download = 'test.json';

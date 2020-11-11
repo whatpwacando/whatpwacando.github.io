@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1605082844509,
+  "timestamp": 1605083523174,
   "index": "'https://whatpwacando.github.io/'/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "'https://whatpwacando.github.io/'/favicon.ico",
         "'https://whatpwacando.github.io/'/index.html",
-        "'https://whatpwacando.github.io/'/main.42fcd9b7cfe8a867f670.js",
+        "'https://whatpwacando.github.io/'/main.df50e75a2b74c892cb1b.js",
         "'https://whatpwacando.github.io/'/manifest.webmanifest",
         "'https://whatpwacando.github.io/'/polyfills.35a5ca1855eb057f016a.js",
         "'https://whatpwacando.github.io/'/runtime.acf0dec4155e77772545.js",
@@ -80,8 +80,8 @@
     "'https://whatpwacando.github.io/'/iconfont.88d4e9757e52f8b9ba8a.woff": "639f457ff5a1adbaedcde1dda011f27336371fa0",
     "'https://whatpwacando.github.io/'/iconfont.99bb729b17d562064f93.ttf": "02f0df4af753eb37767eed8b0019030e3a0efefd",
     "'https://whatpwacando.github.io/'/iconfont.d20c5bb8480b617624d3.eot": "68bdc94298a30fee8b7b7c66ba3206c109f36a31",
-    "'https://whatpwacando.github.io/'/index.html": "9e6078a1682928caf8c2ef4617955c359b12342d",
-    "'https://whatpwacando.github.io/'/main.42fcd9b7cfe8a867f670.js": "a12778b75d8fa099713542c3bde61b34d6931b19",
+    "'https://whatpwacando.github.io/'/index.html": "b02627819003d412615ed35c19cdb5a40266308b",
+    "'https://whatpwacando.github.io/'/main.df50e75a2b74c892cb1b.js": "30acf7c4e1d5157e57e40a857cb7d613960979b4",
     "'https://whatpwacando.github.io/'/manifest.webmanifest": "999b929e3fbf2ea831cff5df30e0647f962f14c3",
     "'https://whatpwacando.github.io/'/polyfills.35a5ca1855eb057f016a.js": "578360d24ce37383f261c7ef63b1f822d28e8dde",
     "'https://whatpwacando.github.io/'/runtime.acf0dec4155e77772545.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",

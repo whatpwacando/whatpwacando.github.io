@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ImageDataTransferComponent } from './image-data-transfer/image-data-transfer.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
+import { ScanComponent } from './scan/scan.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'qrcode',
     component: QrcodeComponent
+  },
+  {
+    path: 'scan',
+    component: ScanComponent
   }
 ];
 

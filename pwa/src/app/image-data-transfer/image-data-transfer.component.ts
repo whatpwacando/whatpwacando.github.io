@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-image-data-transfer',
   templateUrl: './image-data-transfer.component.html',
-  styleUrls: ['./image-data-transfer.component.scss']
+  styleUrls: ['./image-data-transfer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageDataTransferComponent implements OnInit {
 

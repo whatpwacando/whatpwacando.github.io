@@ -9,13 +9,15 @@ import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ImageDataTransferComponent } from './image-data-transfer/image-data-transfer.component';
 import { QrcodeComponent } from './qrcode/qrcode.component';
+import { ScanComponent } from './scan/scan.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ImageDataTransferComponent,
-    QrcodeComponent
+    QrcodeComponent,
+    ScanComponent
   ],
   imports: [
     BrowserModule,

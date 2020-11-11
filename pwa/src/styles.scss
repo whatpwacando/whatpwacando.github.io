@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --blue: #31a3c8;
+  --green: #2dc1ae;
+  --yellow: #fb9838;
+  --red: #f04a99;
+  --gray1: #f1f1f1;
+  --gray-hover: #eee;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+

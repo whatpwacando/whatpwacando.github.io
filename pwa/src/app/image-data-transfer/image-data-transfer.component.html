@@ -1,0 +1,13 @@
+<div class="container">
+  <button (click)="downloadImage()">DownLoad</button>
+  <button id="download-file">File Download</button>
+  <input [(ngModel)]="message" type="text" />
+
+  <input
+    (change)="uploadFile($event)"
+    type="file"
+    accept="image/x-png,image/jpeg,image/gif"
+  />
+
+  {{ text }}
+</div>

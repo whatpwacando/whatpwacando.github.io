@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-image-data-transfer',
@@ -12,10 +12,23 @@ export class ImageDataTransferComponent implements OnInit {
   text = '';
   startTag = '#tallix-start#';
   endTag = '#tallix-end#';
+  imgBase64Data = '';
+  @ViewChild('img', { static: true }) imgCanvas: ElementRef;
 
   constructor() { }
 
   ngOnInit(): void {
+    const ele = this.imgCanvas.nativeElement;
+    const ctx = ele.getContext('2d');
+    const img = new Image(200, 300);
+    img.onload = () => {
+      ele.height = img.height;
+      ele.width = img.width;
+      ctx.drawImage(img, 0, 0);
+
+      this.imgBase64Data = ele.toDataURL('image/png', 0.1);
+    };
+    img.src = '../../assets/bg.jpg';
   }
 
   downloadImage(): void {
@@ -26,9 +39,17 @@ export class ImageDataTransferComponent implements OnInit {
 
     const base = `data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAYAAABkW7XSAAAEa0lEQVR4Xu3UwQkAMAwDsWb/odNnV+iBMoGRg2d3d2bmOAIECHwuYKg+L0g8AgSegMHyDQQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECF8kSBJeDsCYeAAAAAElFTkSuQmCC`;
 
-    const info = window.btoa(this.startTag + this.message + this.endTag);
+    const data = {
+      message: this.message,
+      images: [
+        base,
+        base
+      ]
+    };
+    const base64 = window.atob(this.imgBase64Data.split('data:image/png;base64,')[1]);
 
-    link.href = `${base}${info}`;
+    const info = window.btoa(base64 + this.startTag + JSON.stringify(data) + this.endTag);
+    link.href = `data:image/png;base64,${info}`;
 
     document.body.appendChild(link);
     link.click();
@@ -50,7 +71,6 @@ export class ImageDataTransferComponent implements OnInit {
         console.log(reader.result);
         const result = reader.result as string;
         const data = result.split(this.startTag)[1];
-        console.log(data, '------');
         if (data.indexOf(this.endTag) === -1) {
           alert('data not correct');
 

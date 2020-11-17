@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-image-data-transfer',
@@ -13,9 +13,10 @@ export class ImageDataTransferComponent implements OnInit {
   startTag = '#tallix-start#';
   endTag = '#tallix-end#';
   imgBase64Data = '';
+  images = [];
   @ViewChild('img', { static: true }) imgCanvas: ElementRef;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const ele = this.imgCanvas.nativeElement;
@@ -43,7 +44,27 @@ export class ImageDataTransferComponent implements OnInit {
       message: this.message,
       images: [
         base,
-        base
+        base,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
+        this.imgBase64Data,
       ]
     };
     const base64 = window.atob(this.imgBase64Data.split('data:image/png;base64,')[1]);
@@ -78,8 +99,14 @@ export class ImageDataTransferComponent implements OnInit {
         }
         console.log(data.split(this.endTag));
         const r = data.split(this.endTag)[0];
-        console.error('message is: ', r);
-        this.text = `what you input is : ${r}`;
+        const _ = JSON.parse(r);
+        console.error('message is: ', _);
+
+        this.text = `what you input is : ${_.message}`;
+        this.images = _.images;
+
+        console.log(this.images)
+        this.cdr.markForCheck();
       },
       false
     );

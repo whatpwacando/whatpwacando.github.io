@@ -44,12 +44,12 @@ export class CodeComponent implements OnInit {
 
     for (let i = 0; i < times; i++) {
       if (i === times - 1) {
-        this.dataArray.push(`${i}/${len};${strData.substring(180 * i)}`);
+        this.dataArray.push(`${i}/${times};${strData.substring(180 * i)}`);
 
         break;
       }
 
-      this.dataArray.push(`${i}/${len};${strData.substr(i * 180, 180)}`);
+      this.dataArray.push(`${i}/${times};${strData.substr(i * 180, 180)}`);
     }
 
     console.log(this.dataArray, '====this.dataArray', this.dataArray[10].length);

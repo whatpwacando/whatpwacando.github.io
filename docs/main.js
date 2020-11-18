@@ -593,10 +593,10 @@ class CodeComponent {
         const times = Math.ceil(len / 180);
         for (let i = 0; i < times; i++) {
             if (i === times - 1) {
-                this.dataArray.push(`${i}/${len};${strData.substring(180 * i)}`);
+                this.dataArray.push(`${i}/${times};${strData.substring(180 * i)}`);
                 break;
             }
-            this.dataArray.push(`${i}/${len};${strData.substr(i * 180, 180)}`);
+            this.dataArray.push(`${i}/${times};${strData.substr(i * 180, 180)}`);
         }
         console.log(this.dataArray, '====this.dataArray', this.dataArray[10].length);
     }
@@ -693,6 +693,7 @@ function ScanComponent_span_4_Template(rf, ctx) { if (rf & 1) {
 class ScanComponent {
     constructor() {
         this.transfered = [];
+        this.strData = [];
         this.total = 0;
     }
     ngAfterViewInit() {
@@ -746,6 +747,7 @@ class ScanComponent {
                 this.transfered = [...new Set([...this.transfered, current])];
                 this.total = Number(total);
                 outputData.innerText = info;
+                this.strData[current] = info;
             }
             else {
                 outputMessage.hidden = false;

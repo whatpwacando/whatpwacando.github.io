@@ -12,6 +12,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
   video: any;
   canvasElement: any;
   transfered = [];
+  strData = [];
   total = 0;
 
   constructor() { }
@@ -72,7 +73,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
         this.transfered = [...new Set([...this.transfered, current])];
         this.total = Number(total);
         outputData.innerText = info;
-
+        this.strData[current] = info;
 
       } else {
         outputMessage.hidden = false;

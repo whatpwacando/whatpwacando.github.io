@@ -1,8 +1,13 @@
 <div class="container">
   <canvas class="canvas" #img></canvas>
-  <button (click)="downloadImage()">DownLoad</button>
-  <button id="download-file">File Download</button>
-  <input [(ngModel)]="message" type="text" />
+  <div class="data-input">
+    <label>input Message:
+      <input [(ngModel)]="message" (change)="messageUpdate($event)" type="text" />
+    </label>
+    <br />
+    <button (click)="downloadImage()">DownLoad</button>
+    <!-- <button id="download-file">File Download</button> -->
+  </div>
 
   <input
     (change)="uploadFile($event)"
@@ -12,6 +17,5 @@
 
   {{ text }}
 
-  <img *ngFor="let _ of images" src="{{_}}" alt="">
+  <img *ngFor="let _ of images" src="{{ _ }}" alt="" />
 </div>
-

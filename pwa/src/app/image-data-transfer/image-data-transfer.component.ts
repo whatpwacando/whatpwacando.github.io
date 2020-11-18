@@ -21,15 +21,25 @@ export class ImageDataTransferComponent implements OnInit {
   ngOnInit(): void {
     const ele = this.imgCanvas.nativeElement;
     const ctx = ele.getContext('2d');
-    const img = new Image(200, 300);
+    const img = new Image();
     img.onload = () => {
-      ele.height = img.height;
-      ele.width = img.width;
+      console.log(img.height, img.width)
+      ele.height = 300;
+      ele.width = 200;
       ctx.drawImage(img, 0, 0);
 
-      this.imgBase64Data = ele.toDataURL('image/png', 0.1);
+
+      // this.imgBase64Data = ele.toDataURL('image/png', 0.1);
     };
-    img.src = '../../assets/bg.jpg';
+    img.src = '../../assets/logo.png';
+  }
+
+  messageUpdate(e): void {
+    const ctx = this.imgCanvas.nativeElement.getContext('2d');
+    ctx.font = '20px Arial';
+    ctx.textAlign = 'center';
+    ctx.clearRect(0, 200, 200, 100);
+    ctx.fillText(this.message, this.imgCanvas.nativeElement.width / 2, 230);
   }
 
   downloadImage(): void {
@@ -39,7 +49,7 @@ export class ImageDataTransferComponent implements OnInit {
     link.style.display = 'none';
 
     const base = `data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAYAAABkW7XSAAAEa0lEQVR4Xu3UwQkAMAwDsWb/odNnV+iBMoGRg2d3d2bmOAIECHwuYKg+L0g8AgSegMHyDQQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECBssPECCQETBYmaoEJUDAYPkBAgQyAgYrU5WgBAgYLD9AgEBGwGBlqhKUAAGD5QcIEMgIGKxMVYISIGCw/AABAhkBg5WpSlACBAyWHyBAICNgsDJVCUqAgMHyAwQIZAQMVqYqQQkQMFh+gACBjIDBylQlKAECF8kSBJeDsCYeAAAAAElFTkSuQmCC`;
-
+    this.imgBase64Data = this.imgCanvas.nativeElement.toDataURL('image/png', 0.1);
     const data = {
       message: this.message,
       images: [
@@ -67,6 +77,7 @@ export class ImageDataTransferComponent implements OnInit {
         this.imgBase64Data,
       ]
     };
+
     const base64 = window.atob(this.imgBase64Data.split('data:image/png;base64,')[1]);
 
     const info = window.btoa(base64 + this.startTag + JSON.stringify(data) + this.endTag);

@@ -1,11 +1,23 @@
-img{
+img {
   width: 200px;
+}
+.data-input {
+  text-align: center;
 }
 
 .canvas {
   width: 200px;
   height: 300px;
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
+  // position: absolute;
+  z-index: 1;
+  opacity: 1;
+}
+
+button {
+  margin-top: 10px;
+  height: 30px;
+  width: 200px;
+  border: none;
+  background-color: #999;
+  color: #fff;
 }

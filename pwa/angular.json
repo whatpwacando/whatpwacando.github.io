@@ -32,7 +32,9 @@
               "src/styles.scss",
               "src/assets/iconfont/iconfont.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/qrcode.min.js"
+            ]
           },
           "configurations": {
             "production": {

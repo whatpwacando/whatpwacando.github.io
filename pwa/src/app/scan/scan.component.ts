@@ -11,6 +11,8 @@ export class ScanComponent implements OnInit, AfterViewInit {
   canvas: any;
   video: any;
   canvasElement: any;
+  transfered = 0;
+  total = 0;
 
   constructor() { }
 
@@ -62,6 +64,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
         this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
         outputMessage.hidden = true;
         outputData.parentElement.hidden = false;
+        console.log(code, 'cccc')
         outputData.innerText = code.data;
       } else {
         outputMessage.hidden = false;

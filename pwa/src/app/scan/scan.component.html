@@ -1,6 +1,6 @@
 <div>
   <h1>Scan Demo</h1>
-  <div>{{ transfered }}/{{ total }}</div>
+  <div> <span *ngFor="let t of transfered">{{t}}</span>/{{ total }}</div>
   <div id="loadingMessage">
     🎥 Unable to access video stream (please make sure you have a webcam
     enabled)

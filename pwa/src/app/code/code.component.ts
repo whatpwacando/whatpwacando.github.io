@@ -32,27 +32,28 @@ export class CodeComponent implements OnInit {
       height: clientWidth - 40,
       colorDark: '#000000',
       colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
+      correctLevel: QRCode.CorrectLevel.L
     });
   }
 
   generateDataArray(): void {
     const strData = JSON.stringify(data);
     const len = strData.length;
+    const counts = 500;
 
-    const times = Math.ceil(len / 180);
+    const times = Math.ceil(len / counts);
 
     for (let i = 0; i < times; i++) {
       if (i === times - 1) {
-        this.dataArray.push(`${i}/${times};${strData.substring(180 * i)}`);
+        this.dataArray.push(`${i}/${times};${strData.substring(counts * i)}`);
 
         break;
       }
 
-      this.dataArray.push(`${i}/${times};${strData.substr(i * 180, 180)}`);
+      this.dataArray.push(`${i}/${times};${strData.substr(i * counts, counts)}`);
     }
 
-    console.log(this.dataArray, '====this.dataArray', this.dataArray[10].length);
+    console.log(this.dataArray, '====this.dataArray');
   }
 
   changeCode(offset: number): void {

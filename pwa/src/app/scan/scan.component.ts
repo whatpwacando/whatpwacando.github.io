@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import jsQR from 'jsqr';
 
 @Component({
@@ -15,7 +15,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
   strData = [];
   total = 0;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
 
@@ -70,11 +70,13 @@ export class ScanComponent implements OnInit, AfterViewInit {
         const data = code.data;
         const [head, info] = data.split(';');
         const [current, total] = head.split('/');
-        this.transfered = [...new Set([...this.transfered, current])];
+        console.log(current, total, 'current, total')
+        this.transfered = [...new Set([...this.transfered, current].sort())];
         this.total = Number(total);
         outputData.innerText = info;
         this.strData[current] = info;
 
+        this.cdr.markForCheck();
       } else {
         outputMessage.hidden = false;
         outputData.parentElement.hidden = true;

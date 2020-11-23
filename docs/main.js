@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\xHuang14\OneDrive - Schlumberger\Desktop\developement\PWA\whatpwacando.github.io\pwa\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\NotBackedUp\Mine\whatpwacando.github.io\pwa\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -584,21 +584,22 @@ class CodeComponent {
             height: clientWidth - 40,
             colorDark: '#000000',
             colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.H
+            correctLevel: QRCode.CorrectLevel.L
         });
     }
     generateDataArray() {
         const strData = JSON.stringify(_data__WEBPACK_IMPORTED_MODULE_1__["data"]);
         const len = strData.length;
-        const times = Math.ceil(len / 180);
+        const counts = 500;
+        const times = Math.ceil(len / counts);
         for (let i = 0; i < times; i++) {
             if (i === times - 1) {
-                this.dataArray.push(`${i}/${times};${strData.substring(180 * i)}`);
+                this.dataArray.push(`${i}/${times};${strData.substring(counts * i)}`);
                 break;
             }
-            this.dataArray.push(`${i}/${times};${strData.substr(i * 180, 180)}`);
+            this.dataArray.push(`${i}/${times};${strData.substr(i * counts, counts)}`);
         }
-        console.log(this.dataArray, '====this.dataArray', this.dataArray[10].length);
+        console.log(this.dataArray, '====this.dataArray');
     }
     changeCode(offset) {
         const len = this.dataArray.length;
@@ -646,7 +647,7 @@ CodeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", ctx.currentCode, "/", ctx.totalCodes, "");
-    } }, styles: [".container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  width: 100vw;\n}\n.container[_ngcontent-%COMP%]   header[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.container[_ngcontent-%COMP%]   .code-container[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.container[_ngcontent-%COMP%]   .code-container[_ngcontent-%COMP%]   #code[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n}\n.container[_ngcontent-%COMP%]   .control[_ngcontent-%COMP%] {\n  height: 60px;\n  text-align: center;\n}\n.container[_ngcontent-%COMP%]   .control[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  margin: 0 10px 40px;\n  height: 30px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29kZS9jb2RlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtFQUNBLFlBQUE7QUFDRjtBQUNFO0VBQ0Usa0JBQUE7QUFDSjtBQUVFO0VBQ0UsT0FBQTtBQUFKO0FBRUk7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUFBTjtBQUlFO0VBQ0UsWUFBQTtFQUNBLGtCQUFBO0FBRko7QUFHSTtFQUNFLG1CQUFBO0VBQ0EsWUFBQTtBQUROIiwiZmlsZSI6InNyYy9hcHAvY29kZS9jb2RlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGhlaWdodDogMTAwdmg7XHJcbiAgd2lkdGg6IDEwMHZ3O1xyXG5cclxuICBoZWFkZXIge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuXHJcbiAgLmNvZGUtY29udGFpbmVyIHtcclxuICAgIGZsZXg6IDE7XHJcblxyXG4gICAgI2NvZGUge1xyXG4gICAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC5jb250cm9sIHtcclxuICAgIGhlaWdodDogNjBweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJ1dHRvbiB7XHJcbiAgICAgIG1hcmdpbjogMCAxMHB4IDQwcHg7XHJcbiAgICAgIGhlaWdodDogMzBweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"], changeDetection: 0 });
+    } }, styles: [".container[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n  width: 100vw;\n}\n.container[_ngcontent-%COMP%]   header[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.container[_ngcontent-%COMP%]   .code-container[_ngcontent-%COMP%] {\n  flex: 1;\n}\n.container[_ngcontent-%COMP%]   .code-container[_ngcontent-%COMP%]   #code[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n}\n.container[_ngcontent-%COMP%]   .control[_ngcontent-%COMP%] {\n  height: 60px;\n  text-align: center;\n}\n.container[_ngcontent-%COMP%]   .control[_ngcontent-%COMP%]   button[_ngcontent-%COMP%] {\n  margin: 0 10px 40px;\n  height: 60px;\n  width: 100px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29kZS9jb2RlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtFQUNBLFlBQUE7QUFDRjtBQUNFO0VBQ0Usa0JBQUE7QUFDSjtBQUVFO0VBQ0UsT0FBQTtBQUFKO0FBRUk7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUFBTjtBQUlFO0VBQ0UsWUFBQTtFQUNBLGtCQUFBO0FBRko7QUFHSTtFQUNFLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7QUFETiIsImZpbGUiOiJzcmMvYXBwL2NvZGUvY29kZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICBoZWlnaHQ6IDEwMHZoO1xyXG4gIHdpZHRoOiAxMDB2dztcclxuXHJcbiAgaGVhZGVyIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB9XHJcblxyXG4gIC5jb2RlLWNvbnRhaW5lciB7XHJcbiAgICBmbGV4OiAxO1xyXG5cclxuICAgICNjb2RlIHtcclxuICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAuY29udHJvbCB7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBidXR0b24ge1xyXG4gICAgICBtYXJnaW46IDAgMTBweCA0MHB4O1xyXG4gICAgICBoZWlnaHQ6IDYwcHg7XHJcbiAgICAgIHdpZHRoOiAxMDBweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuIl19 */"], changeDetection: 0 });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CodeComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -691,7 +692,8 @@ function ScanComponent_span_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](t_r1);
 } }
 class ScanComponent {
-    constructor() {
+    constructor(cdr) {
+        this.cdr = cdr;
         this.transfered = [];
         this.strData = [];
         this.total = 0;
@@ -744,10 +746,12 @@ class ScanComponent {
                 const data = code.data;
                 const [head, info] = data.split(';');
                 const [current, total] = head.split('/');
-                this.transfered = [...new Set([...this.transfered, current])];
+                console.log(current, total, 'current, total');
+                this.transfered = [...new Set([...this.transfered, current].sort())];
                 this.total = Number(total);
                 outputData.innerText = info;
                 this.strData[current] = info;
+                this.cdr.markForCheck();
             }
             else {
                 outputMessage.hidden = false;
@@ -765,7 +769,7 @@ class ScanComponent {
         this.canvas.stroke();
     }
 }
-ScanComponent.ɵfac = function ScanComponent_Factory(t) { return new (t || ScanComponent)(); };
+ScanComponent.ɵfac = function ScanComponent_Factory(t) { return new (t || ScanComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"])); };
 ScanComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ScanComponent, selectors: [["app-scan"]], decls: 16, vars: 2, consts: [[4, "ngFor", "ngForOf"], ["id", "loadingMessage"], ["id", "canvas", "hidden", ""], ["id", "output", "hidden", ""], ["id", "outputMessage"], ["hidden", ""], ["id", "outputData"]], template: function ScanComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
@@ -805,7 +809,7 @@ ScanComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
                 styleUrls: ['./scan.component.scss'],
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
             }]
-    }], function () { return []; }, null); })();
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }]; }, null); })();
 
 
 /***/ }),

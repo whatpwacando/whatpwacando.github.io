@@ -115,8 +115,21 @@ export class ScanComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.stopStreamedVideo();
     this.sub.unsubscribe();
   }
+
+  private stopStreamedVideo() {
+    const stream = this.video.srcObject;
+    const tracks = stream.getTracks();
+  
+    tracks.forEach(function(track) {
+      track.stop();
+    });
+  
+    this.video.srcObject = null;
+  }
+
 
   private checkMissingData() {
     const missingIndexList = this.fragments.reduce((acc, curr, index) => {

@@ -58,9 +58,9 @@ export class ScanComponent implements OnInit, OnDestroy {
           this.video.srcObject = stream;
           this.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
           this.video.setAttribute('webkit-playsinline', true);
-          setTimeout(() => {
-            this.playBtn.nativeElement.click();
-          }, 1000);
+          // setTimeout(() => {
+          //   this.playBtn.nativeElement.click();
+          // }, 1000);
           const { clientWidth }: any = this.container.nativeElement;
           this.canvasElement.height = clientWidth;
           this.canvasElement.width = clientWidth;

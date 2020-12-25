@@ -17,5 +17,5 @@
       <div *ngIf="!isCompleted" class="miss-info">{{missingInfo$ | async}}</div>
       <div *ngIf="isCompleted" class="complete">Data transfer complete</div>
   </div>
-  <button class="play-button" #playBtn (click)="startPlay()"></button>
+  <button class="play-button" #playBtn (click)="startPlay()">Start Scan</button>
 </div>

@@ -9,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { BehaviorSubject, from, interval, Subscription, zip } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { delay, filter, map, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -33,6 +33,7 @@ export class ScanComponent implements OnInit, OnDestroy {
 
   private scanTimeStep = 10; // ms
   private sub = new Subscription();
+  private videStream = null;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -53,18 +54,19 @@ export class ScanComponent implements OnInit, OnDestroy {
     )
       .pipe(
         map((stream: any) => {
-          this.video.srcObject = stream;
+          this.videStream = stream;
           this.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
           this.video.setAttribute('webkit-playsinline', true);
           setTimeout(() => {
             this.playBtn.nativeElement.click();
-          }, 100);
+          }, 1000);
           const { clientWidth }: any = this.container.nativeElement;
           this.canvasElement.height = clientWidth;
           this.canvasElement.width = clientWidth;
 
           return this.scanTimeStep;
         }),
+        delay(1000),
         switchMap((timeStep: number) => interval(timeStep)),
         filter(() => !this.isCompleted && Boolean(this?.video)),
         tap(() => {
@@ -107,7 +109,11 @@ export class ScanComponent implements OnInit, OnDestroy {
   }
 
   startPlay() {
-    this.video.play();
+    console.log('111')
+    if (this.videStream) {
+      this.video.srcObject = this.videStream;
+      this.video.play();
+    }
   }
 
   ngOnDestroy(): void {

@@ -1,11 +1,17 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import jsQR from 'jsqr';
 
 @Component({
   selector: 'app-scan',
   templateUrl: './scan.component.html',
   styleUrls: ['./scan.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScanComponent implements OnInit, AfterViewInit {
   canvas: any;
@@ -15,11 +21,9 @@ export class ScanComponent implements OnInit, AfterViewInit {
   strData = [];
   total = 0;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
 
   ngOnInit(): void {
     this.video = document.createElement('video');
@@ -28,18 +32,26 @@ export class ScanComponent implements OnInit, AfterViewInit {
     const _ = this;
 
     // Use facingMode: environment to attemt to get the front camera on phones
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then((stream) => {
-      _.video.srcObject = stream;
-      _.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
-      _.video.play();
-      setInterval(() => {
-        _.tick();
-      }, 100);
-    });
+    navigator.mediaDevices
+      .getUserMedia({ video: { facingMode: 'environment' } })
+      .then((stream) => {
+        _.video.srcObject = stream;
+        _.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
+
+        setInterval(() => {
+          _.tick();
+        }, 100);
+      });
+  }
+
+  play() {
+    this.video.play();
   }
 
   tick(): void {
-    if (!this || !this.video) { return; }
+    if (!this || !this.video) {
+      return;
+    }
     const loadingMessage = document.getElementById('loadingMessage');
     const outputContainer = document.getElementById('output');
     const outputMessage = document.getElementById('outputMessage');
@@ -53,16 +65,43 @@ export class ScanComponent implements OnInit, AfterViewInit {
 
       this.canvasElement.height = this.video.videoHeight;
       this.canvasElement.width = this.video.videoWidth;
-      this.canvas.drawImage(this.video, 0, 0, this.canvasElement.width, this.canvasElement.height);
-      const imageData = this.canvas.getImageData(0, 0, this.canvasElement.width, this.canvasElement.height);
+      this.canvas.drawImage(
+        this.video,
+        0,
+        0,
+        this.canvasElement.width,
+        this.canvasElement.height
+      );
+      const imageData = this.canvas.getImageData(
+        0,
+        0,
+        this.canvasElement.width,
+        this.canvasElement.height
+      );
       const code = jsQR(imageData.data, imageData.width, imageData.height, {
         inversionAttempts: 'dontInvert',
       });
       if (code) {
-        this.drawLine(code.location.topLeftCorner, code.location.topRightCorner, '#FF3B58');
-        this.drawLine(code.location.topRightCorner, code.location.bottomRightCorner, '#FF3B58');
-        this.drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, '#FF3B58');
-        this.drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, '#FF3B58');
+        this.drawLine(
+          code.location.topLeftCorner,
+          code.location.topRightCorner,
+          '#FF3B58'
+        );
+        this.drawLine(
+          code.location.topRightCorner,
+          code.location.bottomRightCorner,
+          '#FF3B58'
+        );
+        this.drawLine(
+          code.location.bottomRightCorner,
+          code.location.bottomLeftCorner,
+          '#FF3B58'
+        );
+        this.drawLine(
+          code.location.bottomLeftCorner,
+          code.location.topLeftCorner,
+          '#FF3B58'
+        );
         outputMessage.hidden = true;
         outputData.parentElement.hidden = false;
         console.log(code, 'cccc');
@@ -70,8 +109,10 @@ export class ScanComponent implements OnInit, AfterViewInit {
         const data = code.data;
         const [head, info] = data.split(';');
         const [current, total] = head.split('/');
-        console.log(current, total, 'current, total')
-        this.transfered = [...new Set([...this.transfered, current].sort())];
+        console.log(current, total, 'current, total');
+        this.transfered = [
+          ...new Set([...this.transfered, Number(current)].sort()),
+        ];
         this.total = Number(total);
         outputData.innerText = info;
         this.strData[current] = info;
@@ -93,5 +134,4 @@ export class ScanComponent implements OnInit, AfterViewInit {
     this.canvas.strokeStyle = color;
     this.canvas.stroke();
   }
-
 }

@@ -1,21 +1,23 @@
 <div #container class="container">
   <header>
-      <div class="progress">
-          <ng-container *ngFor="let recieved of fragments">
-              <div [ngClass]="{ recieved: recieved }"></div>
-          </ng-container>
-      </div>
-      <div class="control">
-          <svg (click)="close()">
-              <use href="#close"></use>
-          </svg>
-      </div>
+    <div class="progress">
+      <ng-container *ngFor="let recieved of fragments">
+        <div [ngClass]="{ recieved: recieved }"></div>
+      </ng-container>
+    </div>
+    <div class="control">
+      <svg (click)="close()">
+        <use href="#close"></use>
+      </svg>
+    </div>
   </header>
   <div class="content">
-      <div *ngIf="!isCompleted" class="message">Scanning...</div>
-      <canvas id="canvas" hidden></canvas>
-      <div *ngIf="!isCompleted" class="miss-info">{{missingInfo$ | async}}</div>
-      <div *ngIf="isCompleted" class="complete">Data transfer complete</div>
+    <button class="play-button" #playBtn (click)="startPlay()">
+      <h1>Start Scan</h1>
+    </button>
+    <div *ngIf="!isCompleted" class="message">Scanning...</div>
+    <canvas id="canvas" hidden></canvas>
+    <div *ngIf="!isCompleted" class="miss-info">{{ missingInfo$ | async }}</div>
+    <div *ngIf="isCompleted" class="complete">Data transfer complete</div>
   </div>
-  <button class="play-button" #playBtn (click)="startPlay()">Start Scan</button>
 </div>

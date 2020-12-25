@@ -3,7 +3,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import jsQR from 'jsqr';
 
@@ -20,6 +22,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
   transfered = [];
   strData = [];
   total = 0;
+  @ViewChild('play', { static: true }) playBtn: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -37,6 +40,10 @@ export class ScanComponent implements OnInit, AfterViewInit {
       .then((stream) => {
         _.video.srcObject = stream;
         _.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
+
+        setTimeout(() => {
+          this.playBtn.nativeElement.click();
+        }, 2000);
 
         setInterval(() => {
           _.tick();

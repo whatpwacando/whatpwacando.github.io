@@ -1,5 +1,6 @@
 <div>
   <h1>Scan Demo</h1>
+  <button #play (click)="play()">Play</button>
   <div> <span *ngFor="let t of transfered">{{t}}</span>/{{ total }}</div>
   <div id="loadingMessage">
     🎥 Unable to access video stream (please make sure you have a webcam
@@ -10,5 +11,4 @@
     <div id="outputMessage">No QR code detected.</div>
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
   </div>
-  <button (click)="play()">Play</button>
 </div>

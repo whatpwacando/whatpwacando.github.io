@@ -54,7 +54,8 @@ export class ScanComponent implements OnInit, OnDestroy {
     )
       .pipe(
         map((stream: any) => {
-          this.videStream = stream;
+
+          this.video.srcObject = stream;
           this.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
           this.video.setAttribute('webkit-playsinline', true);
           setTimeout(() => {
@@ -109,11 +110,8 @@ export class ScanComponent implements OnInit, OnDestroy {
   }
 
   startPlay() {
-    console.log('111')
-    if (this.videStream) {
-      this.video.srcObject = this.videStream;
-      this.video.play();
-    }
+    console.log('22222')
+    this.video.play();
   }
 
   ngOnDestroy(): void {

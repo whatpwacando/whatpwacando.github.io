@@ -42,7 +42,7 @@ export class ScanComponent implements OnInit, AfterViewInit {
         _.video.setAttribute('playsinline', true); // required to tell iOS safari we don't want fullscreen
 
         setTimeout(() => {
-          this.playBtn.nativeElement.click();
+          _.playBtn.nativeElement.click();
         }, 2000);
 
         setInterval(() => {

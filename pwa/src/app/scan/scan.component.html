@@ -1,14 +1,21 @@
-<div>
-  <h1>Scan Demo</h1>
-  <button #play (click)="play()">Play</button>
-  <div> <span *ngFor="let t of transfered">{{t}}</span>/{{ total }}</div>
-  <div id="loadingMessage">
-    🎥 Unable to access video stream (please make sure you have a webcam
-    enabled)
+<div #container class="container">
+  <header>
+      <div class="progress">
+          <ng-container *ngFor="let recieved of fragments">
+              <div [ngClass]="{ recieved: recieved }"></div>
+          </ng-container>
+      </div>
+      <div class="control">
+          <svg (click)="close()">
+              <use href="#close"></use>
+          </svg>
+      </div>
+  </header>
+  <div class="content">
+      <div *ngIf="!isCompleted" class="message">Scanning...</div>
+      <canvas id="canvas" hidden></canvas>
+      <div *ngIf="!isCompleted" class="miss-info">{{missingInfo$ | async}}</div>
+      <div *ngIf="isCompleted" class="complete">Data transfer complete</div>
   </div>
-  <canvas id="canvas" hidden></canvas>
-  <div id="output" hidden>
-    <div id="outputMessage">No QR code detected.</div>
-    <div hidden><b>Data:</b> <span id="outputData"></span></div>
-  </div>
+  <button class="play-button" #playBtn (click)="startPlay()"></button>
 </div>

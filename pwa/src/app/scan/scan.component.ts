@@ -58,7 +58,7 @@ export class ScanComponent implements OnInit, OnDestroy {
           this.video.setAttribute('webkit-playsinline', true);
           setTimeout(() => {
             this.playBtn.nativeElement.click();
-          }, 2000);
+          }, 100);
           const { clientWidth }: any = this.container.nativeElement;
           this.canvasElement.height = clientWidth;
           this.canvasElement.width = clientWidth;

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { off } from 'process';
 import { Observable } from 'rxjs';
 import { data } from './data';
+import pako from 'pako';
 
 declare const QRCode: any;
 
@@ -27,7 +28,7 @@ export class CodeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.qrCodeText = `
+    const text = `
     Schlumberger was founded in 1926 by two brothers Conrad and Marcel Schlumberger from the Alsace region in France as the Electric Prospecting Company (French: Société de prospection électrique). The company recorded the first-ever electrical resistivity well log in Merkwiller-Pechelbronn, France in 1927. Today, Schlumberger supplies the petroleum industry with services such as seismic acquisition and processing, formation evaluation, well testing and directional drilling, well cementing and stimulation, artificial lift, well completions, flow assurance and consulting, and software and information management. The company is also involved in the groundwater extraction[10] and carbon capture and storage industries.[11]
 
 The Schlumberger brothers had experience conducting geophysical surveys in countries such as Romania, Canada, Serbia, South Africa, the Democratic Republic of the Congo and the United States. The new company sold electrical-measurement mapping services, and recorded the first-ever electrical resistivity well log in Merkwiller-Pechelbronn, France in 1927. The company quickly expanded, logging its first well in the U.S. in 1929, in Kern County, California. In 1935, the Schlumberger Well Surveying Corporation was founded in Houston, later evolving into Schlumberger Well Services, and finally Schlumberger Wireline and Testing. Schlumberger invested heavily in research, inaugurating the Schlumberger-Doll Research Center in Ridgefield, Connecticut in 1948, contributing to the development of a number of new logging tools. In 1956, Schlumberger Limited was incorporated as a holding company for all Schlumberger businesses, which by now included American testing and production company Johnston Testers.[citation needed]
@@ -49,6 +50,9 @@ In 1999, Schlumberger and Smith International created a joint venture, M-I L.L.C
 In 2000, the Geco-Prakla division was merged with Western Geophysical to create the seismic contracting company WesternGeco, of which Schlumberger held a 70% stake, the remaining 30% belonging to competitor Baker Hughes. Sedco Forex was spun off, and merged with Transocean Drilling company in 2000.[citation needed]
 
 In 2001, Schlumberger acquired the IT consultancy company Sema plc for $5.2 billion. The company was an Athens 2004 Summer Olympics partner, but Schlumberger's venture into IT consultancy did not pay off, and divestiture of Sema to Atos Origin was completed that year for $1.5 billion. The cards division was divested through an IPO to form Axalto, which later merged with Gemplus to form Gemalto, and the Messaging Solutions unit was spun off and merged with Taral Networks to form Airwide Solutions. In 2003, the Automated Test Equipment group, part of the 1979 Fairchild Semiconductor acquisition, was spun off to NPTest Holding, which later sold it to Credence.[citati`;
+
+    this.qrCodeText = btoa(pako.deflate(text, { to: 'string' }));
+
   }
   onExist(): void {
     this.router.navigate([`../dashboard`], { relativeTo: this.route });

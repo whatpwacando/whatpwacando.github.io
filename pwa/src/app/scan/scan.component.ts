@@ -13,6 +13,7 @@ import jsQR from 'jsqr';
 import pako from 'pako';
 import { BehaviorSubject, from, interval, Observable, Subscription, zip } from 'rxjs';
 import { delay, filter, map, switchMap, tap } from 'rxjs/operators';
+import { EventBusService } from '../core/event-bus.service';
 
 @Component({
   selector: 'app-scan',
@@ -42,7 +43,8 @@ export class ScanComponent implements OnInit, OnDestroy {
   constructor(
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private eventbus: EventBusService
   ) { }
 
   ngOnInit(): void {
@@ -200,18 +202,19 @@ export class ScanComponent implements OnInit, OnDestroy {
       const strData: string = this.codeData.join('');
 
       const unzipedString: string = this.unzip(strData);
+      // console.log(unzipedString);
+      // const transferData: any = JSON.parse(unzipedString);
 
-      const transferData: any = JSON.parse(unzipedString);
-
-      console.log('got all data', transferData);
+      // console.log('got all data', transferData);
       this.stopStreamedVideo();
-      this.saveTransferData(transferData);
+      this.saveTransferData(unzipedString);
     }
 
     this.cdr.markForCheck();
   }
 
   private saveTransferData(data): void {
-    console.log(data);
+    this.eventbus.setScanResult(data);
+    this.router.navigate([`result`]);
   }
 }

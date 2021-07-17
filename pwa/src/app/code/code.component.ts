@@ -51,7 +51,7 @@ In 2000, the Geco-Prakla division was merged with Western Geophysical to create 
 
 In 2001, Schlumberger acquired the IT consultancy company Sema plc for $5.2 billion. The company was an Athens 2004 Summer Olympics partner, but Schlumberger's venture into IT consultancy did not pay off, and divestiture of Sema to Atos Origin was completed that year for $1.5 billion. The cards division was divested through an IPO to form Axalto, which later merged with Gemplus to form Gemalto, and the Messaging Solutions unit was spun off and merged with Taral Networks to form Airwide Solutions. In 2003, the Automated Test Equipment group, part of the 1979 Fairchild Semiconductor acquisition, was spun off to NPTest Holding, which later sold it to Credence.[citati`;
 
-    this.qrCodeText = btoa(pako.deflate(text, { to: 'string' }));
+    this.qrCodeText = btoa(pako.deflate(data, { to: 'string' }));
 
   }
   onExist(): void {

@@ -12,6 +12,7 @@ import { QrcodeComponent } from './qrcode/qrcode.component';
 import { ScanComponent } from './scan/scan.component';
 import { CodeComponent } from './code/code.component';
 import { SharedModule } from './shared/shared.module';
+import { ScanResultComponent } from './scan-result/scan-result.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     ImageDataTransferComponent,
     QrcodeComponent,
     ScanComponent,
-    CodeComponent
+    CodeComponent,
+    ScanResultComponent
   ],
   imports: [
     BrowserModule,

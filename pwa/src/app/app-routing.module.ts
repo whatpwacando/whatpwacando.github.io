@@ -5,6 +5,7 @@ import { ImageDataTransferComponent } from './image-data-transfer/image-data-tra
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { ScanComponent } from './scan/scan.component';
 import { CodeComponent } from './code/code.component';
+import { ScanResultComponent } from './scan-result/scan-result.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'code',
     component: CodeComponent
+  },
+  {
+    path: 'result',
+    component: ScanResultComponent
   }
 ];
 

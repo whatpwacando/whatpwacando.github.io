@@ -101,7 +101,6 @@ export class QrcodeGeneratorComponent implements OnInit, OnDestroy {
 
         const countPerPage: number = Math.ceil(len / times);
 
-        console.log({ len, times, countPerPage });
         const list: Array<string> = [];
 
         for (let i = 0; i < times; i++) {
@@ -113,8 +112,6 @@ export class QrcodeGeneratorComponent implements OnInit, OnDestroy {
 
             list.push(`${i}/${times};${text.substr(i * countPerPage, countPerPage)}`);
         }
-
-        console.log(list, 'listlist');
 
         return list;
     }

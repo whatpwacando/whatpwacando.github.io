@@ -60,21 +60,6 @@ export class ImageDataTransferComponent implements OnInit {
         this.imgBase64Data,
         this.imgBase64Data,
         this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
-        this.imgBase64Data,
       ]
     };
 

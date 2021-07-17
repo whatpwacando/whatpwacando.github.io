@@ -1,8 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  a {
+    text-decoration: none;
+  }
+
+  header {
+    height: 40px;
+    padding: 10px;
+    width: calc(100vw - 20px);
+
+    background-color: #f1f1f1;
+
+    .iconfont {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+
+  .context {
+    flex: 1;
+    overflow: auto;
+    border: 1px solid #f1f1f1;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: 60px;
+  }
+}
 img {
   width: 200px;
 }
 .data-input {
   text-align: center;
+
+  input {
+    height: 24px;
+  }
 }
 
 .canvas {
@@ -15,9 +61,17 @@ img {
 
 button {
   margin-top: 10px;
-  height: 30px;
-  width: 200px;
+  height: 36px;
+  width: 160px;
   border: none;
   background-color: #999;
   color: #fff;
+}
+
+input.upload {
+  position: absolute;
+  overflow: hidden;
+  height: 0;
+  width: 0;
+  opacity: 0;
 }

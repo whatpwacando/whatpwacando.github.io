@@ -1,16 +1,16 @@
 <div #container class="container">
   <header>
-    <div class="progress">
-      <ng-container *ngFor="let recieved of fragments">
-        <div [ngClass]="{ recieved: recieved }"></div>
-      </ng-container>
-    </div>
-    <div class="control">
-      <svg (click)="close()">
-        <use href="#close"></use>
-      </svg>
+    <div class="back">
+      <a routerLink="/" routerLinkActive="active">
+        <i class="iconfont icon-backicon1"></i>
+      </a>
     </div>
   </header>
+  <div class="progress">
+    <ng-container *ngFor="let recieved of fragments">
+      <div [ngClass]="{ recieved: recieved }"></div>
+    </ng-container>
+  </div>
   <div class="content">
     <div *ngIf="!isCompleted" class="message">{{status}}</div>
     <canvas id="canvas" hidden></canvas>

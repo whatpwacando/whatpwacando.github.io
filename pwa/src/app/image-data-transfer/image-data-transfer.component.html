@@ -1,21 +1,27 @@
 <div class="container">
+  <header>
+    <div class="back">
+      <a routerLink="/" routerLinkActive="active">
+        <i class="iconfont icon-backicon1"></i>
+      </a>
+    </div>
+  </header>
   <canvas class="canvas" #img></canvas>
+  <div class="context">
+    {{ text }}
+
+    <img *ngFor="let _ of images" src="{{ _ }}" alt="" />
+  </div>
   <div class="data-input">
     <label>input Message:
       <input [(ngModel)]="message" (change)="messageUpdate($event)" type="text" />
     </label>
     <br />
-    <button (click)="downloadImage()">DownLoad</button>
-    <!-- <button id="download-file">File Download</button> -->
   </div>
 
-  <input
-    (change)="uploadFile($event)"
-    type="file"
-    accept="image/x-png,image/jpeg,image/gif"
-  />
-
-  {{ text }}
-
-  <img *ngFor="let _ of images" src="{{ _ }}" alt="" />
+  <footer>
+    <input class="upload" #Input (change)="uploadFile($event)" type="file" accept="image/x-png,image/jpeg,image/gif" />
+    <button (click)="Input.click()">Select File</button>
+    <button (click)="downloadImage()">DownLoad</button>
+  </footer>
 </div>

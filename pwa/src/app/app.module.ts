@@ -11,6 +11,7 @@ import { ImageDataTransferComponent } from './image-data-transfer/image-data-tra
 import { QrcodeComponent } from './qrcode/qrcode.component';
 import { ScanComponent } from './scan/scan.component';
 import { CodeComponent } from './code/code.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CodeComponent } from './code/code.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerImmediately',

@@ -12,12 +12,13 @@
     </div>
   </header>
   <div class="content">
-    <button class="play-button" #playBtn (click)="startPlay()">
-      <h1>Start Scan</h1>
-    </button>
-    <div *ngIf="!isCompleted" class="message">Scanning...</div>
+    <div *ngIf="!isCompleted" class="message">{{status}}</div>
     <canvas id="canvas" hidden></canvas>
     <div *ngIf="!isCompleted" class="miss-info">{{ missingInfo$ | async }}</div>
     <div *ngIf="isCompleted" class="complete">Data transfer complete</div>
+    <div *ngIf="!isStarted" class="complete">
+      <slb-button color="primary-blue" class="start-scan" #playBtn (click)="startPlay()">Start Scan</slb-button>
+      <div class="tips">Press Button to Start Scan</div>
+    </div>
   </div>
 </div>

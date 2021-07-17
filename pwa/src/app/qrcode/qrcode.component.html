@@ -1,9 +1,24 @@
-<div>
-  <a routerLink="/scan" routerLinkActive="active">
-    <button>Scan QR Code</button>
-  </a>
+<div class="container">
+  <header>
+    <div class="back">
+      <a routerLink="/" routerLinkActive="active">
+        <i class="iconfont icon-backicon1"></i>
+      </a>
+    </div>
+  </header>
 
-  <a routerLink="/code" routerLinkActive="active">
-    <button>generate QR Code</button>
-  </a>
+  <div class="content">
+    <a routerLink="/scan" routerLinkActive="active">
+      <div class="item">
+        <i class="iconfont icon-scan"></i>
+        Scan QR Code
+      </div>
+    </a>
+    <a routerLink="/code" routerLinkActive="active">
+      <div class="item">
+        <i class="iconfont icon-qr-code"></i>
+        generate QR Code
+      </div>
+    </a>
+  </div>
 </div>

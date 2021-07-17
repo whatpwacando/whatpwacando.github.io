@@ -1,0 +1,22 @@
+<div class="container">
+    <header>
+        <div class="title">{{title}}</div>
+        <div class="close-container">
+            <svg (click)="close()">
+                <use href="#close"></use>
+            </svg>
+        </div>
+    </header>
+    <div #content class="content">
+        <div class="description">Scan all QR codes to transfer data to new device.</div>
+        <div class="code-container">
+            <canvas id="canvas" class="code-hoster" #codeContainer></canvas>
+            <div class="page-number">{{currentIndex}} of {{totalLength}}</div>
+        </div>
+        <div class="tips">Please make sure all codes are succesfully scanned on the new device.</div>
+    </div>
+    <footer *ngIf="!isAutoMode">
+        <slb-button class="previous" color="gray-bordered">Previous</slb-button>
+        <slb-button class="next">Next</slb-button>
+    </footer>
+</div>

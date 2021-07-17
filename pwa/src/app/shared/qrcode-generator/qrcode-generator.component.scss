@@ -1,0 +1,67 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  height: calc(100vh - 3rem);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    height: 4rem;
+
+    .title {
+      font-size: 0.75rem;
+      color: $yellow;
+    }
+
+    .close-container {
+      text-align: right;
+
+      svg {
+        height: 1.2rem;
+        width: 1.2rem;
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 10px; // for logic easy to calc
+
+    .description {
+      font-size: 1.25rem;
+      color: $light-gray;
+      text-align: center;
+    }
+
+    .code-container {
+      padding: 10px; // for logic easy to calc
+      text-align: center;
+
+      .page-number {
+        margin: 1rem 0 0.5rem;
+        text-align: center;
+        color: $yellow;
+        font-size: 1rem;
+      }
+    }
+
+    .tips {
+      font-size: 1rem;
+      color: $gray;
+      text-align: center;
+    }
+  }
+
+  footer {
+    display: flex;
+
+    slb-button {
+      flex: 1;
+    }
+
+    .previous {
+      margin-right: 10px;
+    }
+  }
+}

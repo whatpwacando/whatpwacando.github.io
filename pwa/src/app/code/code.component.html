@@ -1,13 +1,10 @@
 <div class="container">
   <header>
-    <h1>{{ currentCode }}/{{ totalCodes }}</h1>
+    <div class="back">
+      <a routerLink="/qrcode" routerLinkActive="active">
+        <i class="iconfont icon-backicon1"></i>
+      </a>
+    </div>
   </header>
-  <div #container class="code-container">
-    <div id="code"></div>
-  </div>
-
-  <div class="control">
-    <button (click)="changeCode(-1)">pre-code</button>
-    <button (click)="changeCode(1)">next-code</button>
-  </div>
+  <app-qrcode-generator [text]="qrCodeText" [timestep]="160" (exist)="onExist()"></app-qrcode-generator>
 </div>

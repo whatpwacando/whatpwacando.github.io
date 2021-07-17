@@ -1,4 +1,4 @@
-// @import '../../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .container {
     height: 100vh;
@@ -14,14 +14,14 @@
             }
 
             .recieved {
-                background-color: yellow;
+                background-color: $yellow;
             }
         }
 
         .well-name {
             padding: 0.5rem 1rem;
             font-size: 0.75rem;
-            color: yellow;
+            color: $yellow;
         }
 
         .control {
@@ -42,7 +42,7 @@
         .miss-info {
             text-align: center;
             height: 2rem;
-            color: gray;
+            color: $light-gray;
             letter-spacing: 0.04px;
             line-height: 2rem;
             padding: 1rem 0;
@@ -62,22 +62,27 @@
             left: 0;
             bottom: 0;
             right: 0;
-            color: yellow;
+            color: $yellow;
             font-size: 1.5rem;
             letter-spacing: 0.04px;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+
+            .tips {
+                margin-top: 1rem;
+                font-size: 0.75rem;
+            }
+
+            .start-scan {
+                ::ng-deep {
+                    button {
+                        padding: 0.625rem 1rem;
+                    }
+                }
+            }
         }
     }
-
-    // .play-button {
-    //     height: 0px;
-    //     width: 0px;
-    //     z-index: -1;
-    //     background: transparent;
-    //     border: none;
-    //     outline: none;
-    // }
 }

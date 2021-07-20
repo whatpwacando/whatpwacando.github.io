@@ -203,11 +203,11 @@ export class ScanComponent implements OnInit, OnDestroy {
 
       const unzipedString: string = this.unzip(strData);
       // console.log(unzipedString);
-      // const transferData: any = JSON.parse(unzipedString);
+      const transferData: any = JSON.parse(unzipedString);
 
-      // console.log('got all data', transferData);
+      console.log('got all data', transferData);
       this.stopStreamedVideo();
-      this.saveTransferData(unzipedString);
+      this.saveTransferData(transferData);
     }
 
     this.cdr.markForCheck();

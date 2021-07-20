@@ -62,7 +62,7 @@ export class QrcodeGeneratorComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const { clientWidth, clientHeight }: any = this.content.nativeElement;
         this.codeSize = Math.min(clientWidth, clientHeight);
-        this.generateQR('Hello Mien');
+        this.generateQR('https://whatpwacando.github.io');
     }
 
     displayCode(list: Array<string>): void {
